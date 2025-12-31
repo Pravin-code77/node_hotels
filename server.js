@@ -54,6 +54,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const db = require('./db')
+require('dotenv').config();
 app.use(bodyParser.json());
 
 
@@ -67,6 +68,7 @@ const personRoutes = require('./route/personRoutes');
 //use the routers
 app.use('/person',personRoutes);
 
-app.listen(3001, () => {
+const PORT = process.env.PORT || 3001
+app.listen(PORT, () => {
   console.log("Server running on port 3001");
 })

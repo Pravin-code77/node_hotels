@@ -4,7 +4,18 @@ const Menu = require('../models/Menu');
 
 router.get('/',async(req,res)=>{
     try {
-        const response = await Menu.find();
+       const data = req.body;
+
+    let response;
+
+    if (Array.isArray(data)) {
+      // Multiple documents
+      response = await Menu.insertMany(data);
+    } else {
+      // Single document
+      const newItem = new Menu(data);
+      response = await newItem.save();
+    }
         console.log(response);
         res.status(201).json(response);
     } catch (error) {

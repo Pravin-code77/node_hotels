@@ -81,16 +81,26 @@ router.post('/',async (req,res)=>{
     //   }
     // })
 
-    try{
-      const data = req.body;
+    try {
+    const data = req.body;
+    let response;
+
+    if (Array.isArray(data)) {
+      // multiple persons
+      response = await Person.insertMany(data);
+    } else {
+      // single person
       const newPerson = new Person(data);
-      const response = await newPerson.save();
-      console.log('data saved ',response);
-      res.status(200).json(response);
-    }catch(error){
-      console.log(error);
-      res.status(500).json({error:'internal Server Error'});
+      response = await newPerson.save();
     }
-  })
+
+    console.log('data saved', response);
+    res.status(201).json(response);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+})
 
 module.exports = router;

@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 //Define the mongodb connection URL
-const mongoURL = 'mongodb://127.0.0.1:27017/Hotel' //Replace 'mydatabase' with your databases name
+//const mongoURL = process.env.MONGODB_URL_LOCAL //Replace 'mydatabase' with your databases name locally
+const mongoURL = process.env.MONGODB_URL;  //connect online database 
 //Set up MongoDB connection
-mongoose.connect(mongoURL)
+mongoose.connect(mongoURL);
 //get default connection
 //mongoose maintains a default connnection object representing mongodb connection
 const db = mongoose.connection;
