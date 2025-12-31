@@ -1,0 +1,19 @@
+{
+  "name": "node_mini_project",
+  "version": "1.0.0",
+  "description": "It is node mini project",
+  "license": "ISC",
+  "author": "pravin choramale",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.1",
+    "express": "^5.2.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^9.0.2",
+    "nodemon": "^3.1.11"
+  }
+}
